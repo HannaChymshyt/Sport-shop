@@ -1,0 +1,68 @@
+@startuml
+interface sport_shop.Item {
+~ String name()
+~ String color()
+~ Manufacturer producer()
+~ float price()
+}
+class sport_shop.Order {
+~ List<Item> items
++ void addItem(Item)
++ float getCost()
++ void showItems()
+}
+interface sport_shop.Manufacturer {
+~ String produced()
+}
+abstract class sport_shop.Shirt {
++ Manufacturer producer()
++ {abstract}float price()
+}
+class sport_shop.BlueShirt {
++ float price()
++ String name()
++ String color()
+}
+class sport_shop.ShirtManufacturer {
++ String produced()
+}
+class sport_shop.OrderBuilder {
++ Order orderA()
++ Order orderB()
+}
+class sport_shop.BlackCap {
++ float price()
++ String name()
++ String color()
+}
+class sport_shop.WhiteCap {
++ float price()
++ String name()
++ String color()
+}
+class sport_shop.Main {
++ {static} void main(String[])
+}
+abstract class sport_shop.Cap {
++ Manufacturer producer()
++ {abstract}float price()
+}
+class sport_shop.RedShirt {
++ float price()
++ String name()
++ String color()
+}
+class sport_shop.CapManufacturer {
++ String produced()
+}
+
+
+sport_shop.Item <|.. sport_shop.Shirt
+sport_shop.Shirt <|-- sport_shop.BlueShirt
+sport_shop.Manufacturer <|.. sport_shop.ShirtManufacturer
+sport_shop.Cap <|-- sport_shop.BlackCap
+sport_shop.Cap <|-- sport_shop.WhiteCap
+sport_shop.Item <|.. sport_shop.Cap
+sport_shop.Shirt <|-- sport_shop.RedShirt
+sport_shop.Manufacturer <|.. sport_shop.CapManufacturer
+@enduml
